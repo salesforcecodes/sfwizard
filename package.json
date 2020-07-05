@@ -1,0 +1,25 @@
+{
+  "name": "sfwizard",
+  "version": "1.0.0",
+  "description": "static website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salesforcecodes/sfwizard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salesforcecodes/sfwizard/issues"
+  },
+  "homepage": "https://github.com/salesforcecodes/sfwizard#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}
