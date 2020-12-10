@@ -1,4 +1,4 @@
-<definitions name="MyService" targetNamespace="http://www.examples.com/wsdl/MyService.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.examples.com/wsdl/MyService.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<definitions name="MyService" targetNamespace="https://sfwizard.herokuapp.com/wsdl/MyService.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://sfwizard.herokuapp.com/wsdl/MyService.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
    <message name="MyFunctionRequest">
       <part name="domain" type="xsd:string" />
@@ -6,6 +6,7 @@
    <message name="MyFunctionResponse">
       <part name="ip" type="xsd:string" />
    </message>
+
    <portType name="MyPort">
       <operation name="MyFunction">
          <input message="tns:MyFunctionRequest" />
@@ -29,7 +30,7 @@
    <service name="MyService">
       <documentation>WSDL File for MyService</documentation>
       <port binding="tns:MyFunction_Binding" name="MyPort">
-         <soap:address location="http://www.examples.com/MyFunction/" />
+         <soap:address location="https://sfwizard.herokuapp.com/MyFunction/" />
       </port>
    </service>
 
