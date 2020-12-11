@@ -1,10 +1,19 @@
-<definitions name="MyService" targetNamespace="https://sfwizard.herokuapp.com/wsdl/MyService.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://sfwizard.herokuapp.com/wsdl/MyService.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!-- <?xml version='1.0' encoding='UTF-8'?>
+<definitions name="MyService" targetNamespace="https://sfwizard.herokuapp.com/wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://sfwizard.herokuapp.com/wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <types>
+      <xsd:complexType name="ipObj">
+         <xsd:sequence>
+            <xsd:element name="ip" type="xsd:string" />
+         </xsd:sequence>
+      </xsd:complexType>
+   </types>
 
    <message name="MyFunctionRequest">
       <part name="domain" type="xsd:string" />
    </message>
    <message name="MyFunctionResponse">
-      <part name="ip" type="xsd:string" />
+      <part name="ip" element="xsd:string" />
    </message>
 
    <portType name="MyPort">
@@ -15,14 +24,14 @@
    </portType>
 
    <binding name="MyFunction_Binding" type="tns:MyPort">
-      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
       <operation name="MyFunction">
          <soap:operation soapAction="MyFunction" />
          <input>
-            <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService" use="encoded" />
+            <soap:body use="literal" />
          </input>
          <output>
-            <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService" use="encoded" />
+            <soap:body use="literal" />
          </output>
       </operation>
    </binding>
@@ -30,8 +39,65 @@
    <service name="MyService">
       <documentation>WSDL File for MyService</documentation>
       <port binding="tns:MyFunction_Binding" name="MyPort">
-         <soap:address location="https://sfwizard.herokuapp.com/MyFunction/" />
+         <soap:address location="https://sfwizard.herokuapp.com/wsdl/" />
       </port>
    </service>
 
-</definitions>
+</definitions> -->
+
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="https://sfwizard.herokuapp.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://sfwizard.herokuapp.com">
+   <wsdl:documentation>MyService</wsdl:documentation>
+
+   <wsdl:types>
+      <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="https://sfwizard.herokuapp.com">
+         <xs:element name="domain">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="domain" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="ip">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="ip" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+   </wsdl:types>
+
+   <wsdl:message name="domainRequest">
+      <wsdl:part name="parameters" element="ns:domain" />
+   </wsdl:message>
+   <wsdl:message name="domainResponse">
+      <wsdl:part name="parameters" element="ns:ip" />
+   </wsdl:message>
+
+   <wsdl:portType name="MyServicePortType">
+      <wsdl:operation name="myFuction">
+         <wsdl:input message="ns:domainRequest" wsaw:Action="urn:domain" />
+         <wsdl:output message="ns:domainResponse" wsaw:Action="urn:ip" />
+      </wsdl:operation>
+   </wsdl:portType>
+
+   <wsdl:binding name="MyServiceHttpBinding" type="ns:MyServicePortType">
+      <http:binding verb="POST" />
+      <wsdl:operation name="MyFunction">
+         <http:operation location="MyFunction" />
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters" />
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters" />
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+
+   <wsdl:service name="MyService">
+      <wsdl:port name="MyServiceHttpsEndpoint" binding="ns:MyServiceHttpBinding">
+         <soap:address location="https://sfwizard.herokuapp.com/wsdl" />
+      </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>
