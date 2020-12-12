@@ -3,14 +3,14 @@
 
    <wsdl:types>
       <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="https://sfwizard.herokuapp.com">
-         <xs:element name="domain">
+         <xs:element name="MyFunction">
             <xs:complexType>
                <xs:sequence>
                   <xs:element minOccurs="0" name="domain" type="xs:string" />
                </xs:sequence>
             </xs:complexType>
          </xs:element>
-         <xs:element name="ip">
+         <xs:element name="IpResponse">
             <xs:complexType>
                <xs:sequence>
                   <xs:element minOccurs="0" name="ip" type="xs:string" />
@@ -21,10 +21,10 @@
    </wsdl:types>
 
    <wsdl:message name="domainRequest">
-      <wsdl:part name="parameters" element="ns:domain" />
+      <wsdl:part name="parameters" element="ns:MyFunction" />
    </wsdl:message>
    <wsdl:message name="domainResponse">
-      <wsdl:part name="parameters" element="ns:ip" />
+      <wsdl:part name="parameters" element="ns:IpResponse" />
    </wsdl:message>
 
    <wsdl:portType name="MyServicePortType">
