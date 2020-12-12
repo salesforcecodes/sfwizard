@@ -8,7 +8,10 @@ app.use(express.static('public'));
 var xml = require('fs').readFileSync('./files/myService.wsdl', 'utf8');
 app.listen(process.env.PORT || 3000, () => {
     console.log('Application is started');
-    soap.listen(app, '/wsdl', soapService, xml, () => {
+    let temp = soap.listen(app, '/wsdl', soapService, xml, () => {
         console.log('server initialized');
     });
+    temp.log = (type, data) => {
+        // console.log(type, data);
+    }
 });

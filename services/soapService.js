@@ -2,7 +2,7 @@ var dns = require('dns');
 
 export default {
     MyService: {
-        MyPort: {
+        MyServicePortType: {
             MyFunction: function(args, callback) {
                 console.log(args);
                 if(!args.domain) {
