@@ -75,7 +75,7 @@
    </wsdl:message>
 
    <wsdl:portType name="MyServicePortType">
-      <wsdl:operation name="MyFuction">
+      <wsdl:operation name="MyFunction">
          <wsdl:input message="ns:domainRequest" wsaw:Action="urn:domain" />
          <wsdl:output message="ns:domainResponse" wsaw:Action="urn:ip" />
       </wsdl:operation>
