@@ -1,9 +1,9 @@
-<wsdl:definitions name="MyService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://localhost:3000/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://localhost:3000/wsdl">
+<wsdl:definitions name="MyService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="https://sfwizard.herokuapp.com/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="https://sfwizard.herokuapp.com/wsdl">
 
    <wsdl:documentation>MyService</wsdl:documentation>
 
    <wsdl:types>
-      <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://localhost:3000/wsdl">
+      <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="https://sfwizard.herokuapp.com/wsdl">
          <xs:element name="IpRequest">
             <xs:complexType>
                <xs:sequence>
@@ -50,7 +50,7 @@
 
    <wsdl:service name="MyService">
       <wsdl:port name="MyServiceHttpsEndpoint" binding="ns:MyServiceHttpBinding">
-         <soap:address location="http://localhost:3000/wsdl" />
+         <soap:address location="https://sfwizard.herokuapp.com/wsdl" />
       </wsdl:port>
    </wsdl:service>
 
