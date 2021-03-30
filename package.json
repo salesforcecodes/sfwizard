@@ -18,6 +18,7 @@
   "homepage": "https://github.com/salesforcecodes/sfwizard#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "jsforce": "^1.10.1",
